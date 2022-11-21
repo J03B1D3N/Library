@@ -7,22 +7,69 @@
     <title>Book Library</title>
     <link rel="stylesheet" href="styles.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Roboto:ital@1&display=swap');
         </style>
 </head>
 <body>
     <header>
-        <div class="title">
+        <div class="headerTitle">
             The Library
         </div>
-        <div class="addBook">
-            <a href="">+ ADD BOOK</a>
-        </div>
+        <a id="addBook" class="addBook" href="">+ ADD BOOK</a>
         <button class="login">
             LOGIN
         </button>
     </header>
-    <main></main>
+    <main>
+        <form class="form" action="get">
+            
+            <div class="inputTable">
+                <div class="inputTitle">Information</div>
+                <div class="author input">
+                    <label for="author">Author:</label>
+                    <input type="text" name="author" id="author" >
+                </div>
+                
+                <div class="yearOfPublication input">
+                    <label for="yearOfPublication">Year of Publication:</label>
+                    <input type="number" name="yearOfPublication" id="yearOfPublication" >
+                    
+                </div>
+                
+                <div class="title input">
+                    <label for="title">Title:</label>
+                    <input type="text"  name="title" id="title" >
+                </div>
+                
+                <div class="edition input">
+                    <label for="edition">Edition:</label>
+                    <input type="text" name="edition" id="edition" >
+                </div>
+                
+                <div class="publisher input">
+                    <label for="publisher">Publisher:</label>
+                    <input type="text" name="publisher" id="publisher" >
+                </div>
+
+                <div class="placeOfPublication input">
+                    <label for="placeOfPublication">Place of Publication:</label>
+                    <input type="text" name="placeOfPublication" id="placeOfPublication">
+                </div>
+
+                <button class="add" id="add" >ADD</button>
+            </div>
+            
+        </form>
+        <a href="">
+            <div class="book">
+                <div class="author">George R. R. Martin</div>
+                <div class="yearOfPublication">1996</div>
+                <div class="title">Game Of Thrones</div>
+                <div class="edition"></div>
+                <div class="publisher">Voyager Books</div>
+                <div class="placeOfPublication">Michingan, USA</div>
+            </div>
+        </a>
+    </main>
     <nav></nav>
     <footer> Copyright @ Justas Lapiene 2022</footer>
     <script src="script.js"></script>

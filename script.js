@@ -1,4 +1,12 @@
-function book(title, author, pages, read) {
+const Book = document.getElementById('#addBook')
+const addBook = book
+
+
+
+
+
+
+function createBook(title, author, pages, read) {
     this.title = title
     this.author = author
     this.pages = pages
@@ -10,9 +18,9 @@ book.prototype.print = function () {
     console.log(this.title + ", " + this.author + ", " + this.pages + ", " + this.read +".")
 }
 
-const baltaDrobule = new book("Balta drobule", "Antanas Skema", 123, "Not read")
+const baltaDrobule = new createBook("Balta drobule", "Antanas Skema", 123, "Not read")
 
-const altoriuSeselis = new book("Altoriu Sesely", "Mykolaitis Putinas", 1025, "Read")
+const altoriuSeselis = new createBook("Altoriu Sesely", "Mykolaitis Putinas", 1025, "Read")
 
 let myLibrary = [];
 
