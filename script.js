@@ -1,8 +1,15 @@
-const Book = document.getElementById('#addBook')
-const addBook = book
+const Book = document.getElementById('addBook')
+const form = document.getElementById('form')
+const addBook = book.addEventListener('click', (createForm()));
 
+function openForm() {
+    form.style.display = "block";
 
+}
 
+function closeForm() {
+    form.style.display = "none";
+}
 
 
 
@@ -32,3 +39,5 @@ addBookToLibrary(baltaDrobule)
 addBookToLibrary(altoriuSeselis)
 
 console.log(myLibrary)
+
+
