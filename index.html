@@ -14,16 +14,22 @@
         <div class="headerTitle">
             The Library
         </div>
-        <a id="addBook" class="addBook" href="" onclick="openForm()">+ ADD BOOK</a>
+        <a id="addBook" class="addBook" href="" onclick="event.preventDefault(); openForm();">+ ADD BOOK</a>
         <button class="login">
             LOGIN
         </button>
     </header>
     <main>
-        <form id="form" class="form" action="get" onsubmit="event.preventDefault(); closeForm();">
+        <form id="form" class="form" action="get" onsubmit="event.preventDefault(); getInfo(); closeForm();">
             
             <div class="inputTable">
                 <div class="inputTitle">Information</div>
+
+
+                <div class="title input">
+                    <label for="title">Title:</label>
+                    <input type="text"  name="title" id="title" >
+                </div>
                 <div class="author input">
                     <label for="author">Author:</label>
                     <input type="text" name="author" id="author" >
@@ -34,12 +40,7 @@
                     <input type="number" name="yearOfPublication" id="yearOfPublication" >
                     
                 </div>
-                
-                <div class="title input">
-                    <label for="title">Title:</label>
-                    <input type="text"  name="title" id="title" >
-                </div>
-                
+                 
                 <div class="edition input">
                     <label for="edition">Edition:</label>
                     <input type="text" name="edition" id="edition" >
@@ -59,11 +60,12 @@
             </div>
             
         </form>
+        <pre id="arrPrint"></pre>
         <a href="">
             <div class="book">
+                <div class="title">Game Of Thrones</div>
                 <div class="author">George R. R. Martin</div>
                 <div class="yearOfPublication">1996</div>
-                <div class="title">Game Of Thrones</div>
                 <div class="edition"></div>
                 <div class="publisher">Voyager Books</div>
                 <div class="placeOfPublication">Michingan, USA</div>
