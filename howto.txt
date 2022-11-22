@@ -2,3 +2,7 @@ create a book creator. done
 create add to library function. done
 press +addbook button get a pop up of a form to fill the info.
 once info is filled add the form to the main.
+
+
+
+with each close of the form, get the infro from the form into an array. create a div with the book class. in the book div create divs for the inputs and then populate the inputs with the correct inputs from the form.
