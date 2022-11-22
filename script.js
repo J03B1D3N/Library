@@ -2,6 +2,14 @@ const form = document.getElementById('form')
 const main = document.querySelector('main')
 const books = document.querySelector('#books')
 
+const inputTitle = document.getElementById('title')
+const inputAuthor = document.getElementById('author')
+const inputYearOfPub = document.getElementById('yearOfPublication')
+const inputEdition = document.getElementById('edition')
+const inputPublisher = document.getElementById('publisher')
+const inputPlaceOfPub = document.getElementById('placeOfPublication')
+
+
 
 function openForm() {
     form.style.display = "block";
@@ -30,35 +38,18 @@ function createBook(inputTitle, inputAuthor, inputYearOfPub, inputEdition, input
 
 
 function addInfo () {
-    const inputTitle = document.getElementById('title').value
-    const inputAuthor = document.getElementById('author').value
-    const inputYearOfPub = document.getElementById('yearOfPublication').value
-    const inputEdition = document.getElementById('edition').value
-    const inputPublisher = document.getElementById('publisher').value
-    const inputPlaceOfPub = document.getElementById('placeOfPublication').value
-
-    const newBook = new createBook(inputTitle, inputAuthor, inputYearOfPub, inputEdition, inputPublisher, inputPlaceOfPub)
+    
+    const newBook = new createBook(inputTitle.value, inputAuthor.value, inputYearOfPub.value, inputEdition.value, inputPublisher.value, inputPlaceOfPub.value)
 
     addBookToLibrary(newBook)
     
     console.log(myLibrary)
-
 }
-    function deleteCard() {
-        const index = myLibrary.findIndex(object => {
-            return object.title = inputTitle;
-        });
-
-        myLibrary.splice(index, 1)
-        console.log(myLibrary)
-        const removeCard = document.querySelector(`#books`)[index]
-        console.log(index)
-    }
-
-    function createCard() {
+    
+function createCard() {
 
     const book = document.createElement('div')
-    book.setAttribute('class', 'book')
+    book.setAttribute('id', 'book')
 
     const title = document.createElement('div')
     title.setAttribute('class','title')
@@ -108,12 +99,25 @@ function addInfo () {
     book.appendChild(btns)
 
     books.appendChild(book)
-    }
-    
-    function addCard() {
-        myLibrary.map(x => createCard(x))
-        }
+}
 
+function addCard() {
+    while (books.firstChild) {
+        books.removeChild(books.firstChild);
+      }
+    myLibrary.map(x => createCard(x))
+    }
+
+function deleteCard() {
+    const index = myLibrary.findIndex(object => {
+        return object.title = inputTitle;
+    });
+    
+    myLibrary.splice(index, 1)
+     console.log(myLibrary)
+     const removeCard = document.querySelector(`#books`)[index]
+     console.log(index)
+}
     
 
 

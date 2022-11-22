@@ -105,7 +105,7 @@ a {
 #addBook:hover {
     color: lightgrey;
 }
-.book {
+#book {
     border: 1px solid black;
     padding: 20px;
     padding-left: 30px;
