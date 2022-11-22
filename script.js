@@ -10,7 +10,6 @@ const inputPublisher = document.getElementById('publisher')
 const inputPlaceOfPub = document.getElementById('placeOfPublication')
 
 
-
 function openForm() {
     form.style.display = "block";
     
@@ -43,37 +42,43 @@ function addInfo () {
 
     addBookToLibrary(newBook)
     
-    console.log(myLibrary)
+    
 }
     
 function createCard() {
 
-    const book = document.createElement('div')
-    book.setAttribute('id', 'book')
+    while (books.firstChild) {
+        books.removeChild(books.firstChild);
+    }
 
+    for(i = 0; i < myLibrary.length; i++) {
+    const book = document.createElement('div')
+    book.setAttribute('class', 'book')
+    book.setAttribute('data-number', `${[i]}`)
+ 
     const title = document.createElement('div')
     title.setAttribute('class','title')
-    title.textContent = myLibrary[myLibrary.length -1].title
+    title.textContent = myLibrary[i].title
 
     const author = document.createElement('div')
     author.setAttribute('class','author')
-    author.textContent = myLibrary[myLibrary.length -1].author
+    author.textContent = myLibrary[i].author
 
     const yearOfPub = document.createElement('div')
     yearOfPub.setAttribute('class','yearOfPublication')
-    yearOfPub.textContent = myLibrary[myLibrary.length -1].yearOfPub
+    yearOfPub.textContent = myLibrary[i].yearOfPub
 
     const edition = document.createElement('div')
     edition.setAttribute('class','edition')
-    title.textContent = myLibrary[myLibrary.length -1].title
+    title.textContent = myLibrary[i].title
 
     const publisher = document.createElement('div')
     publisher.setAttribute('class','publisher')
-    edition.textContent = myLibrary[myLibrary.length -1].edition
+    edition.textContent = myLibrary[i].edition
 
     const placeOfPub = document.createElement('div')
     placeOfPub.setAttribute('class','placeOfPublication')
-    placeOfPub.textContent = myLibrary[myLibrary.length -1].placeOfPub
+    placeOfPub.textContent = myLibrary[i].placeOfPub
 
     const btns = document.createElement('div')
     btns.setAttribute('class', 'btns')
@@ -82,10 +87,13 @@ function createCard() {
     deleteCardBtn.textContent = 'Delete';
     deleteCardBtn.setAttribute('onclick', 'deleteCard();')
     deleteCardBtn.setAttribute('class', 'btn')
+    deleteCardBtn.setAttribute('id', 'delete')
+    deleteCardBtn.setAttribute('data-attribute', `${[i]}`)
 
     const citation = document.createElement('button')
     citation.textContent = 'Citation';
     citation.setAttribute('class', 'btn')
+    // citation.setAttribute('data-number', `${[i]}`)
 
     btns.appendChild(deleteCardBtn)
     btns.appendChild(citation)
@@ -99,25 +107,14 @@ function createCard() {
     book.appendChild(btns)
 
     books.appendChild(book)
-}
-
-function addCard() {
-    while (books.firstChild) {
-        books.removeChild(books.firstChild);
-      }
-    myLibrary.map(x => createCard(x))
-    }
-
-function deleteCard() {
-    const index = myLibrary.findIndex(object => {
-        return object.title = inputTitle;
-    });
     
-    myLibrary.splice(index, 1)
-     console.log(myLibrary)
-     const removeCard = document.querySelector(`#books`)[index]
-     console.log(index)
+    
+    }
 }
+
+ 
+
+
     
 
 
