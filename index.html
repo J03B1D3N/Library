@@ -20,7 +20,7 @@
         </button>
     </header>
     <main>
-        <form id="form" class="form" action="get" onsubmit="event.preventDefault(); getInfo(); closeForm();">
+        <form id="form" class="form" action="get" onsubmit="event.preventDefault(); addInfo(); closeForm(); addCard();">
             
             <div class="inputTable">
                 <div class="inputTitle">Information</div>
@@ -60,16 +60,20 @@
             </div>
             
         </form>
-        <a onclick="event.preventDefault()" href="">
-            <div class="book">
-                <div class="title">Game Of Thrones</div>
-                <div class="author">George R. R. Martin</div>
-                <div class="yearOfPublication">1996</div>
-                <div class="edition"></div>
-                <div class="publisher">Voyager Books</div>
-                <div class="placeOfPublication">Michingan, USA</div>
-            </div>
-        </a>
+        <div id="books">
+                <div class="book">
+                    <div class="title">Game Of Thrones</div>
+                    <div class="author">George R. R. Martin</div>
+                    <div class="yearOfPublication">1996</div>
+                    <div class="edition"></div>
+                    <div class="publisher">Voyager Books</div>
+                    <div class="placeOfPublication">Michingan, USA</div>
+                    <div class="btns">
+                        <button class="btn">Delete</button>
+                        <button class="btn">Citation</button>
+                    </div>
+                </div>
+        </div>
     </main>
     <nav></nav>
     <footer> Copyright @ Justas Lapiene 2022</footer>

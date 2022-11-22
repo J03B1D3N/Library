@@ -1,5 +1,6 @@
 const form = document.getElementById('form')
 const main = document.querySelector('main')
+const books = document.querySelector('#books')
 
 
 function openForm() {
@@ -26,7 +27,9 @@ function createBook(inputTitle, inputAuthor, inputYearOfPub, inputEdition, input
     this.placeOfPub = inputPlaceOfPub
 }
 
-function getInfo () {
+
+
+function addInfo () {
     const inputTitle = document.getElementById('title').value
     const inputAuthor = document.getElementById('author').value
     const inputYearOfPub = document.getElementById('yearOfPublication').value
@@ -40,9 +43,19 @@ function getInfo () {
     
     console.log(myLibrary)
 
-    const bookLink = document.createElement('a')
-    bookLink.setAttribute('onclick', `event.preventDefault();`)
-    bookLink.setAttribute('href', "")
+}
+    function deleteCard() {
+        const index = myLibrary.findIndex(object => {
+            return object.title = inputTitle;
+        });
+
+        myLibrary.splice(index, 1)
+        console.log(myLibrary)
+        const removeCard = document.querySelector(`#books`)[index]
+        console.log(index)
+    }
+
+    function createCard() {
 
     const book = document.createElement('div')
     book.setAttribute('class', 'book')
@@ -71,17 +84,35 @@ function getInfo () {
     placeOfPub.setAttribute('class','placeOfPublication')
     placeOfPub.textContent = myLibrary[myLibrary.length -1].placeOfPub
 
+    const btns = document.createElement('div')
+    btns.setAttribute('class', 'btns')
+
+    const deleteCardBtn = document.createElement('button')
+    deleteCardBtn.textContent = 'Delete';
+    deleteCardBtn.setAttribute('onclick', 'deleteCard();')
+    deleteCardBtn.setAttribute('class', 'btn')
+
+    const citation = document.createElement('button')
+    citation.textContent = 'Citation';
+    citation.setAttribute('class', 'btn')
+
+    btns.appendChild(deleteCardBtn)
+    btns.appendChild(citation)
+
     book.appendChild(title)
     book.appendChild(author)
     book.appendChild(yearOfPub)
     book.appendChild(edition)
     book.appendChild(publisher)
     book.appendChild(placeOfPub)
+    book.appendChild(btns)
 
-    bookLink.appendChild(book)
-
-    main.appendChild(bookLink)
+    books.appendChild(book)
     }
+    
+    function addCard() {
+        myLibrary.map(x => createCard(x))
+        }
 
     
 
