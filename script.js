@@ -124,22 +124,32 @@ createCard()
 
 function citeThis(event) {
    const bookDiv =  event.currentTarget.parentNode.parentNode
-   const bookTitle = bookDiv.querySelector('.title').textContent
-   const bookAuthor = bookDiv.querySelector('.author').textContent
-   const bookYearOfPub = bookDiv.querySelector('.yearOfPublication').textContent
-   const bookEdition = bookDiv.querySelector('.edition').textContent
-   const bookPublisher = bookDiv.querySelector('.publisher').textContent
-   const bookPlaceOfPub = bookDiv.querySelector('.placeOfPublication').textContent
-   console.log(bookTitle)
-   console.log(bookAuthor)
-   console.log(bookYearOfPub)
-   console.log(bookEdition)
-   console.log(bookPublisher)
-   console.log(bookPlaceOfPub)
+   let bookTitle = bookDiv.querySelector('.title').textContent
+   let bookAuthor = bookDiv.querySelector('.author').textContent
+   let bookYearOfPub = bookDiv.querySelector('.yearOfPublication').textContent
+   let bookEdition = bookDiv.querySelector('.edition').textContent
+   let bookPublisher = bookDiv.querySelector('.publisher').textContent
+   let bookPlaceOfPub = bookDiv.querySelector('.placeOfPublication').textContent
+   let harvardRefference = "";
+   if( bookAuthor != "") {
+    harvardRefference = bookAuthor
+   }  if(bookYearOfPub != 0) {
+    harvardRefference = harvardRefference + "(" + bookYearOfPub + ")"
+   }  if( bookTitle != "") {
+    harvardRefference = harvardRefference + bookTitle + ", "
+   }  if(bookEdition != "") {
+    harvardRefference = harvardRefference + bookEdition + ", "
+   }  if(bookPublisher != "") {
+    harvardRefference = harvardRefference + bookPublisher + ", "
+   } if(bookPlaceOfPub != ""){
+    harvardRefference = harvardRefference + bookPlaceOfPub + "."
+   }
+   navigator.clipboard.writeText(harvardRefference)
+   alert("Harvard reference copied")
 
 }
     
-
+author
 
    
 
