@@ -12,7 +12,12 @@ const inputPlaceOfPub = document.getElementById('placeOfPublication')
 
 function openForm() {
     form.style.display = "block";
-    
+    inputTitle.value = ""
+    inputAuthor.value = ""
+    inputYearOfPub.value = ""
+    inputEdition.value = ""
+    inputPublisher.value = ""
+    inputPlaceOfPub.value = ""
 }
 
 let myLibrary = [];
