@@ -85,7 +85,7 @@ function createCard() {
 
     const deleteCardBtn = document.createElement('button')
     deleteCardBtn.textContent = 'Delete';
-    deleteCardBtn.setAttribute('onclick', 'deleteCard();')
+    deleteCardBtn.setAttribute('onclick', 'deleteCard(event);')
     deleteCardBtn.setAttribute('class', 'btn')
     deleteCardBtn.setAttribute('id', 'delete')
     deleteCardBtn.setAttribute('data-attribute', `${[i]}`)
@@ -112,7 +112,14 @@ function createCard() {
     }
 }
 
- 
+
+function deleteCard(event){
+
+const deletebtn = event.currentTarget.parentNode.parentNode
+deletebtn.remove()
+myLibrary.splice(deletebtn.dataset.number, 1)
+createCard()
+}
 
 
     
