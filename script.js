@@ -134,7 +134,7 @@ function citeThis(event) {
    if( bookAuthor != "") {
     harvardRefference = bookAuthor
    }  if(bookYearOfPub != 0) {
-    harvardRefference = harvardRefference + "(" + bookYearOfPub + ")"
+    harvardRefference = harvardRefference + "(" + bookYearOfPub + ") "
    }  if( bookTitle != "") {
     harvardRefference = harvardRefference + bookTitle + ", "
    }  if(bookEdition != "") {
@@ -149,7 +149,7 @@ function citeThis(event) {
 
 }
     
-author
+
 
    
 
