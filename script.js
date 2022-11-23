@@ -70,11 +70,11 @@ function createCard() {
 
     const edition = document.createElement('div')
     edition.setAttribute('class','edition')
-    title.textContent = myLibrary[i].title
+    edition.textContent = myLibrary[i].edition
 
     const publisher = document.createElement('div')
     publisher.setAttribute('class','publisher')
-    edition.textContent = myLibrary[i].edition
+    publisher.textContent = myLibrary[i].publisher
 
     const placeOfPub = document.createElement('div')
     placeOfPub.setAttribute('class','placeOfPublication')
@@ -93,7 +93,8 @@ function createCard() {
     const citation = document.createElement('button')
     citation.textContent = 'Citation';
     citation.setAttribute('class', 'btn')
-    // citation.setAttribute('data-number', `${[i]}`)
+    citation.setAttribute('data-number', `${[i]}`)
+    citation.setAttribute('onclick', 'citeThis(event);')
 
     btns.appendChild(deleteCardBtn)
     btns.appendChild(citation)
@@ -121,7 +122,22 @@ myLibrary.splice(deletebtn.dataset.number, 1)
 createCard()
 }
 
+function citeThis(event) {
+   const bookDiv =  event.currentTarget.parentNode.parentNode
+   const bookTitle = bookDiv.querySelector('.title').textContent
+   const bookAuthor = bookDiv.querySelector('.author').textContent
+   const bookYearOfPub = bookDiv.querySelector('.yearOfPublication').textContent
+   const bookEdition = bookDiv.querySelector('.edition').textContent
+   const bookPublisher = bookDiv.querySelector('.publisher').textContent
+   const bookPlaceOfPub = bookDiv.querySelector('.placeOfPublication').textContent
+   console.log(bookTitle)
+   console.log(bookAuthor)
+   console.log(bookYearOfPub)
+   console.log(bookEdition)
+   console.log(bookPublisher)
+   console.log(bookPlaceOfPub)
 
+}
     
 
 
