@@ -61,6 +61,17 @@ nav {
     background-color: var(--nav);
     grid-column: 6/7;
     grid-row: 2/9;
+    color: black;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+p>a {
+    color: white;
+}
+p>a:hover {
+    color: lightgrey;
 }
 main {
     height: 100%;

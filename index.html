@@ -19,6 +19,7 @@
             LOGIN
         </button>
     </header>
+    
     <main>
         <form id="form" class="form" action="get" onsubmit="event.preventDefault(); addInfo(); closeForm(); createCard();">
         
@@ -31,7 +32,7 @@
                     <input type="text"  name="title" id="title" >
                 </div>
                 <div class="author input">
-                    <label for="author">Author:</label>
+                    <label for="author">Author:    (For the last name use only the first letter)</label>
                     <input type="text" name="author" id="author" >
                 </div>
                 
@@ -75,7 +76,12 @@
                 </div>
         </div>
     </main>
-    <nav></nav>
+    <nav>
+        <p>This website is designed to store and then easily access and copy your BOOKS for HARVARD refferencing in your bibliography.</p>
+        <p>ALL inputs are case-sensitive therefore input them exactly as you want them to be copied.</p>
+        <p>If the input field is left blank, it will not be included in the copy clipbar.</p>
+        <p>For more information on Harvard refferencing visit this <a href="https://libguides.scu.edu.au/harvard/books"> Harvard Referencing Guide</a>.</p>
+    </nav>
     <footer> Copyright @ Justas Lapiene 2022</footer>
     <script src="script.js"></script>
 </body>
