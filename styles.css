@@ -84,15 +84,42 @@ main {
     grid-column: 1/7;
     grid-row: 2/9;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 300px));
-    grid-template-rows: repeat(auto-fit, minmax( 250px, 300px));
     height: 100%;
     width: 100%;
-    gap: 20px;
+    gap: 10px;
     align-items: center;
-    padding: 0px 20px;
+    padding:10px;
     box-sizing: border-box;
     overflow-y: auto;
+    grid-auto-flow: row;
+    grid-auto-rows: minmax(250px, 50%); /* play with this to change height of the children, 50% will fill half */
+    grid-template-columns: repeat(4, 1fr); /* do not set template columns and rows */
+    grid-template-rows: unset;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+#addBook {
+    color: white;
+    display: block;
+}
+#addBook:hover {
+    color: lightgrey;
+}
+.book {
+    border: 3px solid black;
+    padding: 20px;
+    padding-left: 30px;
+    background-color: #fff;
+    border-radius: 15px;
+    height: fit-content;
+    width: 250px;
+    box-sizing:content-box;
+}
+.title {
+    overflow-wrap: break-word;
 }
 .btns {
     display: flex;
@@ -109,27 +136,6 @@ main {
     background-color: grey;
     scale: 1.1;
 }
-a {
-    text-decoration: none;
-    color: inherit;
-}
-#addBook {
-    color: white;
-    display: block;
-}
-#addBook:hover {
-    color: lightgrey;
-}
-.book {
-    border: 1px solid black;
-    padding: 20px;
-    padding-left: 30px;
-    background-color: #fff;
-    border-radius: 15px;
-    height: 70%;
-    box-sizing:content-box;
-}
-
 .form {
     box-sizing: border-box;
     display: none;
