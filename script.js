@@ -62,9 +62,11 @@ function createCard() {
     book.setAttribute('class', 'book')
     book.setAttribute('data-number', `${[i]}`)
  
+    const titleItalics = document.createElement('i')
     const title = document.createElement('div')
     title.setAttribute('class','title')
-    title.textContent = myLibrary[i].title
+    title.appendChild(titleItalics)
+    titleItalics.textContent = myLibrary[i].title
 
     const author = document.createElement('div')
     author.setAttribute('class','author')
@@ -129,17 +131,18 @@ createCard()
 
 function citeThis(event) {
    const bookDiv =  event.currentTarget.parentNode.parentNode
-   let bookTitle = bookDiv.querySelector('.title').textContent
+   let bookTitle = bookDiv.querySelector('.title').innerHTML
    let bookAuthor = bookDiv.querySelector('.author').textContent
    let bookYearOfPub = bookDiv.querySelector('.yearOfPublication').textContent
    let bookEdition = bookDiv.querySelector('.edition').textContent
    let bookPublisher = bookDiv.querySelector('.publisher').textContent
    let bookPlaceOfPub = bookDiv.querySelector('.placeOfPublication').textContent
+
    let harvardRefference = "";
    if( bookAuthor != "") {
     harvardRefference = bookAuthor
-   }  if(bookYearOfPub != 0) {
-    harvardRefference = harvardRefference + "(" + bookYearOfPub + ") "
+   }  if(bookYearOfPub != "") {
+    harvardRefference = harvardRefference + " (" + bookYearOfPub + ") "
    }  if( bookTitle != "") {
     harvardRefference = harvardRefference + bookTitle + ", "
    }  if(bookEdition != "") {
@@ -149,8 +152,24 @@ function citeThis(event) {
    } if(bookPlaceOfPub != ""){
     harvardRefference = harvardRefference + bookPlaceOfPub + "."
    }
-   navigator.clipboard.writeText(harvardRefference)
-   alert("Harvard reference copied")
+
+
+
+   try {
+    
+    const blobInput = new Blob([harvardRefference], {type: 'text/html'});
+    const clipboardItemInput = new ClipboardItem({'text/html' : blobInput});
+    navigator.clipboard.write([clipboardItemInput]);
+  } catch(e) {
+    alert('copy failed!')
+    console.log(e);
+  } alert('copied!')
+
+
+   
+  
+   
+   
 
 }
     
