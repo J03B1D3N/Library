@@ -8,6 +8,13 @@ const inputYearOfPub = document.getElementById('yearOfPublication')
 const inputEdition = document.getElementById('edition')
 const inputPublisher = document.getElementById('publisher')
 const inputPlaceOfPub = document.getElementById('placeOfPublication')
+const exitBtn = document.getElementById('exit')
+
+
+exitBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    closeForm();
+})
 
 let myLibrary = [];
 

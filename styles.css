@@ -205,7 +205,7 @@ input[type=number]::-webkit-inner-spin-button {
   -webkit-appearance: none; 
   margin: 0; 
 }
-.add {
+.submit {
     grid-row: 9/10;
     height: 2rem;
     border-radius: 5px;
@@ -216,11 +216,37 @@ input[type=number]::-webkit-inner-spin-button {
     background-color: var(--headerFooter);
     color: white;
 }
-.add:hover {
-    background-color: rgb(175, 77, 74);
+.submit:hover {
+    color: grey;
 }
-.add:active {
-    background-color: rgb(223, 83, 78);
+#exit {
+    position: absolute;
+    height: 1.7rem;
+    width: 1.7rem;
+    background-color: var(--headerFooter);
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    right: 40px;
+}
+#exit::before,
+#exit::after {
+    content: '';
+    height: 90%;
+    width: 10%;
+    background-color: white;
+}
+#exit::before {
+    transform: rotate(45deg);
+    position: absolute;
+}
+#exit:after {
+    transform: rotate(-45deg);
+    position: absolute;
+}
+#exit:hover {
+    background-color: grey;
 }
 
 
