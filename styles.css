@@ -118,6 +118,7 @@ a {
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 10px;
 }
 .title {
     overflow-wrap: break-word;
@@ -131,6 +132,28 @@ a {
     font-size: inherit;
     border-radius: 5px;
     border: 2px solid black;
+}
+.delete {
+    width: 1.70rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+.delete::before,
+.delete::after {
+    content:'';
+    height: 90%;
+    width: 10%;
+    background-color: black;
+}
+.delete::before {
+    transform: rotate(45deg);
+    position: absolute;
+}
+.delete::after {
+    transform: rotate(-45deg);
+    position: absolute;
 }
 .btn:hover {
     background-color: grey;

@@ -91,12 +91,12 @@ function createCard() {
 
     const deleteCardBtn = document.createElement('button')
     deleteCardBtn.setAttribute('onclick', 'deleteCard(event);')
-    deleteCardBtn.setAttribute('class', 'btn')
+    deleteCardBtn.setAttribute('class', 'btn delete')
     deleteCardBtn.setAttribute('id', 'delete')
     deleteCardBtn.setAttribute('data-attribute', `${[i]}`)
 
     const citation = document.createElement('button')
-    citation.textContent = 'Citation';
+    citation.textContent = 'Cite';
     citation.setAttribute('class', 'btn')
     citation.setAttribute('data-number', `${[i]}`)
     citation.setAttribute('onclick', 'citeThis(event);')
