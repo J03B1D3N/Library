@@ -9,6 +9,7 @@ const inputEdition = document.getElementById('edition')
 const inputPublisher = document.getElementById('publisher')
 const inputPlaceOfPub = document.getElementById('placeOfPublication')
 
+let myLibrary = [];
 
 function openForm() {
     form.style.display = "block";
@@ -20,8 +21,6 @@ function openForm() {
     inputPlaceOfPub.value = ""
 }
 
-let myLibrary = [];
-
 function addBookToLibrary (n) {
     myLibrary.push(n)
 }
@@ -30,15 +29,17 @@ function closeForm() {
     form.style.display = "none";
 }
 
-function createBook(inputTitle, inputAuthor, inputYearOfPub, inputEdition, inputPublisher, inputPlaceOfPub) {
-    this.title = inputTitle
-    this.author = inputAuthor
-    this.yearOfPub = inputYearOfPub
-    this.edition = inputEdition
-    this.publisher = inputPublisher
-    this.placeOfPub = inputPlaceOfPub
-}
 
+class createBook {
+    constructor (inputTitle, inputAuthor, inputYearOfPub, inputEdition, inputPublisher, inputPlaceOfPub) {
+        this.title = inputTitle
+        this.author = inputAuthor
+        this.yearOfPub = inputYearOfPub
+        this.edition = inputEdition
+        this.publisher = inputPublisher
+        this.placeOfPub = inputPlaceOfPub
+    }
+}
 
 
 function addInfo () {
@@ -89,7 +90,6 @@ function createCard() {
     btns.setAttribute('class', 'btns')
 
     const deleteCardBtn = document.createElement('button')
-    deleteCardBtn.textContent = 'Delete';
     deleteCardBtn.setAttribute('onclick', 'deleteCard(event);')
     deleteCardBtn.setAttribute('class', 'btn')
     deleteCardBtn.setAttribute('id', 'delete')
@@ -104,13 +104,13 @@ function createCard() {
     btns.appendChild(deleteCardBtn)
     btns.appendChild(citation)
 
+    book.appendChild(btns)
     book.appendChild(title)
     book.appendChild(author)
     book.appendChild(yearOfPub)
     book.appendChild(edition)
     book.appendChild(publisher)
     book.appendChild(placeOfPub)
-    book.appendChild(btns)
 
     books.appendChild(book)
     

@@ -87,14 +87,12 @@ main {
     height: 100%;
     width: 100%;
     gap: 10px;
-    align-items: center;
+    justify-items: start;
     padding:10px;
     box-sizing: border-box;
-    overflow-y: auto;
+    overflow: auto;
     grid-auto-flow: row;
-    grid-auto-rows: minmax(250px, 50%); /* play with this to change height of the children, 50% will fill half */
-    grid-template-columns: repeat(4, 1fr); /* do not set template columns and rows */
-    grid-template-rows: unset;
+    grid-auto-rows: min-content;
 }
 
 a {
@@ -115,8 +113,11 @@ a {
     background-color: #fff;
     border-radius: 15px;
     height: fit-content;
-    width: 250px;
-    box-sizing:content-box;
+    width: fit-content;
+    box-sizing:border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .title {
     overflow-wrap: break-word;
@@ -124,7 +125,6 @@ a {
 .btns {
     display: flex;
     gap: 15px;
-    margin-top: 10px;
 }
 
 .btn {
