@@ -43,7 +43,7 @@ function openForm() {
 }
 
 function addBookToLibrary (n) {
-    myLibrary.push(n)
+    myLibrary.unshift(n)
 }
 
 function closeForm1() {
