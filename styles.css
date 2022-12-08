@@ -132,6 +132,12 @@ a {
     font-size: inherit;
     border-radius: 5px;
     border: 2px solid black;
+    height: 33px;
+    font-weight: 600;
+    font-size: inherit;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .delete {
     width: 1.70rem;
@@ -219,7 +225,7 @@ input[type=number]::-webkit-inner-spin-button {
 .submit:hover {
     color: grey;
 }
-#exit {
+#exit1, #exit2 {
     position: absolute;
     height: 1.7rem;
     width: 1.7rem;
@@ -230,23 +236,43 @@ input[type=number]::-webkit-inner-spin-button {
     align-items: center;
     right: 40px;
 }
-#exit::before,
-#exit::after {
+#exit1::before,
+#exit1::after {
     content: '';
     height: 90%;
     width: 10%;
     background-color: white;
 }
-#exit::before {
+#exit1::before {
     transform: rotate(45deg);
     position: absolute;
 }
-#exit:after {
+#exit1:after {
     transform: rotate(-45deg);
     position: absolute;
 }
-#exit:hover {
+#exit1:hover {
     background-color: grey;
 }
+
+#exit2::before,
+#exit2::after {
+    content: '';
+    height: 90%;
+    width: 10%;
+    background-color: white;
+}
+#exit2::before {
+    transform: rotate(45deg);
+    position: absolute;
+}
+#exit2:after {
+    transform: rotate(-45deg);
+    position: absolute;
+}
+#exit2:hover {
+    background-color: grey;
+}
+
 
 

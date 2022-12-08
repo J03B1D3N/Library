@@ -1,59 +1,77 @@
-const form = document.getElementById('form')
+const form1 = document.getElementById('form1')
+const form2 = document.getElementById('form2')
 const main = document.querySelector('main')
 const books = document.querySelector('#books')
 
-const inputTitle = document.getElementById('title')
-const inputAuthor = document.getElementById('author')
-const inputYearOfPub = document.getElementById('yearOfPublication')
-const inputEdition = document.getElementById('edition')
-const inputPublisher = document.getElementById('publisher')
-const inputPlaceOfPub = document.getElementById('placeOfPublication')
-const exitBtn = document.getElementById('exit')
+const inputTitle1 = document.getElementById('title1')
+const inputAuthor1 = document.getElementById('author1')
+const inputYearOfPub1 = document.getElementById('yearOfPublication1')
+const inputEdition1 = document.getElementById('edition1')
+const inputPublisher1 = document.getElementById('publisher1')
+const inputPlaceOfPub1 = document.getElementById('placeOfPublication1')
+
+const inputTitle2 = document.getElementById('title2')
+const inputAuthor2 = document.getElementById('author2')
+const inputYearOfPub2 = document.getElementById('yearOfPublication2')
+const inputEdition2 = document.getElementById('edition2')
+const inputPublisher2 = document.getElementById('publisher2')
+const inputPlaceOfPub2 = document.getElementById('placeOfPublication2')
+
+const exitBtn1 = document.getElementById('exit1')
+const exitBtn2 = document.getElementById('exit2')
 
 
-exitBtn.addEventListener('click', (e) => {
+exitBtn1.addEventListener('click', (e) => {
     e.preventDefault();
-    closeForm();
+    closeForm1();
+})
+exitBtn2.addEventListener('click', (e) => {
+    e.preventDefault();
+    closeForm2();
 })
 
 let myLibrary = [];
 
 function openForm() {
-    form.style.display = "block";
-    inputTitle.value = ""
-    inputAuthor.value = ""
-    inputYearOfPub.value = ""
-    inputEdition.value = ""
-    inputPublisher.value = ""
-    inputPlaceOfPub.value = ""
+    form1.style.display = "block";
+    inputTitle1.value = ""
+    inputAuthor1.value = ""
+    inputYearOfPub1.value = ""
+    inputEdition1.value = ""
+    inputPublisher1.value = ""
+    inputPlaceOfPub1.value = ""
 }
 
 function addBookToLibrary (n) {
     myLibrary.push(n)
 }
 
-function closeForm() {
-    form.style.display = "none";
+function closeForm1() {
+    form1.style.display = "none";
+}
+
+function closeForm2() {
+    form2.style.display = "none";
 }
 
 
-class createBook {
-    constructor (inputTitle, inputAuthor, inputYearOfPub, inputEdition, inputPublisher, inputPlaceOfPub) {
-        this.title = inputTitle
-        this.author = inputAuthor
-        this.yearOfPub = inputYearOfPub
-        this.edition = inputEdition
-        this.publisher = inputPublisher
-        this.placeOfPub = inputPlaceOfPub
+class createBook1 {
+    constructor (inputTitle1, inputAuthor1, inputYearOfPub1, inputEdition1, inputPublisher1, inputPlaceOfPub1) {
+        this.title = inputTitle1
+        this.author = inputAuthor1
+        this.yearOfPub = inputYearOfPub1
+        this.edition = inputEdition1
+        this.publisher = inputPublisher1
+        this.placeOfPub = inputPlaceOfPub1
     }
 }
 
 
 function addInfo () {
     
-    const newBook = new createBook(inputTitle.value, inputAuthor.value, inputYearOfPub.value, inputEdition.value, inputPublisher.value, inputPlaceOfPub.value)
+    const newBook1 = new createBook1(inputTitle1.value, inputAuthor1.value, inputYearOfPub1.value, inputEdition1.value, inputPublisher1.value, inputPlaceOfPub1.value)
 
-    addBookToLibrary(newBook)
+    addBookToLibrary(newBook1)
     
     
 }
@@ -104,14 +122,23 @@ function createCard() {
     deleteCardBtn.setAttribute('id', 'delete')
     deleteCardBtn.setAttribute('data-attribute', `${[i]}`)
 
+    
+    
+
     const citation = document.createElement('button')
-    citation.textContent = 'Cite';
-    citation.setAttribute('class', 'btn')
-    citation.setAttribute('data-number', `${[i]}`)
+    citation.textContent = 'C';
+    citation.setAttribute('class', 'btn cite')
     citation.setAttribute('onclick', 'citeThis(event);')
 
+    const edit = document.createElement('button')
+    edit.textContent = 'E';
+    edit.setAttribute('class', 'btn edit')
+    edit.setAttribute('onclick', 'openEdit(event)')
+    
+    
     btns.appendChild(deleteCardBtn)
     btns.appendChild(citation)
+    btns.appendChild(edit)
 
     book.appendChild(btns)
     book.appendChild(title)
@@ -136,6 +163,7 @@ myLibrary.splice(deletebtn.dataset.number, 1)
 createCard()
 }
 
+
 function citeThis(event) {
    const bookDiv =  event.currentTarget.parentNode.parentNode
    let bookTitle = bookDiv.querySelector('.title').innerHTML
@@ -159,10 +187,7 @@ function citeThis(event) {
    } if(bookPlaceOfPub != ""){
     harvardRefference = harvardRefference + bookPlaceOfPub + "."
    }
-
-
-
-   try {
+    try {
     
     const blobInput = new Blob([harvardRefference], {type: 'text/html'});
     const clipboardItemInput = new ClipboardItem({'text/html' : blobInput});
@@ -171,16 +196,47 @@ function citeThis(event) {
     alert('copy failed!')
     console.log(e);
   } alert('copied!')
+}
 
+class createBook2 {
+    constructor (inputTitle2, inputAuthor2, inputYearOfPub2, inputEdition2, inputPublisher2, inputPlaceOfPub2) {
+        this.title = inputTitle2
+        this.author = inputAuthor2
+        this.yearOfPub = inputYearOfPub2
+        this.edition = inputEdition2
+        this.publisher = inputPublisher2
+        this.placeOfPub = inputPlaceOfPub2
+    }
+}
 
-   
-  
-   
-   
-
+function openEdit(event) {
+    const target = event.currentTarget.parentNode.parentNode
+    let bookTitle = target.querySelector('.title').textContent
+    let bookAuthor = target.querySelector('.author').textContent
+    let bookYearOfPub = target.querySelector('.yearOfPublication').textContent
+    let bookEdition = target.querySelector('.edition').textContent
+    let bookPublisher = target.querySelector('.publisher').textContent
+    let bookPlaceOfPub = target.querySelector('.placeOfPublication').textContent
+ 
+     form2.style.display = "block";
+     inputTitle2.value = bookTitle;
+     inputAuthor2.value = bookAuthor;
+     inputYearOfPub2.value = bookYearOfPub;
+     inputEdition2.value = bookEdition;
+     inputPublisher2.value = bookPublisher;
+     inputPlaceOfPub2.value = bookPlaceOfPub;
+     return target
+ }
+  form2.addEventListener('onsubmit', () => {
+    console.log(target)
+  })
+const createEditedBook = function () {
+    const newBook2 = new createBook1(inputTitle2.value, inputAuthor2.value, inputYearOfPub2.value, inputEdition2.value, inputPublisher2.value, inputPlaceOfPub2.value)
 }
     
-
+function renderEdit() {
+    myLibrary
+}
 
    
 
