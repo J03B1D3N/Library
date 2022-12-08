@@ -195,7 +195,7 @@ function citeThis(event) {
   } catch(e) {
     alert('copy failed!')
     console.log(e);
-  } alert('copied!')
+  } alert('Copied!')
 }
 
 class createBook2 {
