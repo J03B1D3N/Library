@@ -209,6 +209,10 @@ class createBook2 {
     }
 }
 
+form2.addEventListener('submit', (e) => {
+    e.preventDefault();
+  })
+
 function openEdit(event) {
     const target = event.currentTarget.parentNode.parentNode
     let bookTitle = target.querySelector('.title').textContent
@@ -216,7 +220,7 @@ function openEdit(event) {
     let bookYearOfPub = target.querySelector('.yearOfPublication').textContent
     let bookEdition = target.querySelector('.edition').textContent
     let bookPublisher = target.querySelector('.publisher').textContent
-    let bookPlaceOfPub = target.querySelector('.placeOfPublication').textContent
+    let bookPlaceOfPub = target.querySelector('.placeOfPublication').textContent;
  
      form2.style.display = "block";
      inputTitle2.value = bookTitle;
@@ -225,18 +229,25 @@ function openEdit(event) {
      inputEdition2.value = bookEdition;
      inputPublisher2.value = bookPublisher;
      inputPlaceOfPub2.value = bookPlaceOfPub;
-     return target
- }
-  form2.addEventListener('onsubmit', () => {
-    console.log(target)
-  })
-const createEditedBook = function () {
-    const newBook2 = new createBook1(inputTitle2.value, inputAuthor2.value, inputYearOfPub2.value, inputEdition2.value, inputPublisher2.value, inputPlaceOfPub2.value)
-}
     
-function renderEdit() {
-    myLibrary
-}
+     
+      form2.addEventListener('submit', () => {
+        console.log(target.dataset.number)
+        const newBook2 = new createBook2(inputTitle2.value, inputAuthor2.value, inputYearOfPub2.value, inputEdition2.value, inputPublisher2.value, inputPlaceOfPub2.value)
+        myLibrary.splice(target.dataset.number, 1, newBook2);
+        createCard();
+        closeEditForm();
+      },{once: true})
+ }
+
+ function closeEditForm() {
+    form2.style.display = 'none'
+ }
+
+    
+
+    
+
 
    
 
