@@ -14,6 +14,7 @@ body {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     grid-template-rows: repeat(9, 1fr);
+    overflow: hidden;
 }
 header {
     background-color: var(--headerFooter);
@@ -23,6 +24,25 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+.loggedIn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    transition: 0.1s;
+}
+.signOut {
+    cursor: pointer;
+     transition: 0.1s;
+    margin-right: 1rem;
+}
+.signOut:hover {
+    scale: 1.05;
+}
+.userPhoto {
+    width: 25%;
+    border-radius: 50px;
 }
 
 .addBook:hover {

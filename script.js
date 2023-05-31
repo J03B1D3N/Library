@@ -1,3 +1,27 @@
+import {initializeApp} from "https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"
+import {GoogleAuthProvider, getAuth, signInWithPopup, onAuthStateChanged, signOut} from "https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js"
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyCSJ55bgo1XqUM_skdRzXJdY25SlCj2jmc",
+  authDomain: "to-do-app-41067.firebaseapp.com",
+  projectId: "to-do-app-41067",
+  storageBucket: "to-do-app-41067.appspot.com",
+  messagingSenderId: "163156191604",
+  appId: "1:163156191604:web:99576d5b97e41b6e85a421"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+
+const provider = new GoogleAuthProvider();
+
+const auth = getAuth();
+
+
+const signIn = document.getElementById('signIn')
 const form1 = document.getElementById('form1')
 const form2 = document.getElementById('form2')
 const main = document.querySelector('main')
@@ -19,6 +43,75 @@ const inputPlaceOfPub2 = document.getElementById('placeOfPublication2')
 
 const exitBtn1 = document.getElementById('exit1')
 const exitBtn2 = document.getElementById('exit2')
+const signInBtn = document.createElement('button')
+const header = document.querySelector('header')
+signInBtn.setAttribute('class', 'login')
+signInBtn.setAttribute('id', 'signIn')
+signInBtn.textContent = 'Login'
+const loggedIn = document.createElement('div')
+loggedIn.setAttribute('class', 'loggedIn')
+const userPhoto = document.createElement('img')
+userPhoto.setAttribute('class', 'userPhoto')
+
+const signOutBtn = document.createElement('div')
+
+signOutBtn.setAttribute('class', 'signOut')
+signOutBtn.textContent = "Sign Out"
+signOutBtn.addEventListener('click', () => {
+    signOut(auth).then(() => {
+        // Sign-out successful.
+      }).catch((error) => {
+        // An error happened.
+      });
+})
+
+
+onAuthStateChanged(auth, (user) => {
+    if (user) {
+      // User is signed in, see docs for a list of available properties
+      // https://firebase.google.com/docs/reference/js/auth.user
+      signInBtn.style.background = user.photoUrl
+      const uid = user.uid;
+      console.log(user)
+      // ...
+      signInBtn.style.display = 'none'
+       userPhoto.src = user.photoURL
+       loggedIn.appendChild(userPhoto)
+       loggedIn.appendChild(signOutBtn)
+      header.appendChild(loggedIn)
+        loggedIn.style.display = "flex"
+    } else {
+      // User is signed out
+      // ...
+      loggedIn.style.display = "none"
+      signInBtn.style.display = "block"
+      console.log("logged out")
+      header.appendChild(signInBtn)
+    }
+  });
+
+signInBtn.addEventListener('click', () => {
+    signInWithPopup(auth, provider)
+  .then((result) => {
+    // This gives you a Google Access Token. You can use it to access the Google API.
+    const credential = GoogleAuthProvider.credentialFromResult(result);
+    const token = credential.accessToken;
+    // The signed-in user info.
+    const user = result.user;
+    // IdP data available using getAdditionalUserInfo(result)
+    // ...
+  }).catch((error) => {
+    // Handle Errors here.
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    // The email of the user's account used.
+    const email = error.customData.email;
+    // The AuthCredential type that was used.
+    const credential = GoogleAuthProvider.credentialFromError(error);
+    // ...
+  });
+
+})
 
 
 exitBtn1.addEventListener('click', (e) => {
